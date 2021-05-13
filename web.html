@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz Challenge</title>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="header-container">
+                <div class="high-score">
+                    <p> view high score</p>
+                </div>
+                <div class="timer">
+                <p> time : <span id="counter">30</span> </p>
+                </div>
+            </div>
+        </header>
+
+
+            <h1 id="content">Code Quiz Challenge</h1>
+
+        <div id="start">
+            <button>Start Quiz</button>
+        </div>
+
+        <div id="choices" style="display:none;">
+            <div>
+                <button class="option" id="btn-1">Button 1</button>
+                <br>
+                <button class="option" id="btn-2">Button 2</button>
+                <br>
+                <button class="option" id="btn-3">Button 3</button>
+                <br>
+                <button class="option" id="btn-4">Button 4</button>
+            </div>
+
+            <div id="selected-answer">
+                <p> Your Answer : <span id="result"></span> </p>
+            </div>
+
+        </div>
+
+        <div id="scoreboard" style="display:none;">
+            <p>Your Score : <span id="score"></span></p>
+            <button id="restart">Go Back</button>
+        </div>
+        
+    </div>
+    
+
+    <script src="quiz.js"></script>
+</body>
+</html>
