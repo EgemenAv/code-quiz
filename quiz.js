@@ -91,8 +91,8 @@ const questions  = [
         result.innerText = "Correct!";
     }else{
         result.innerText = "Wrong!";
-        if(count > 10){
-            count = count - 10;
+        if(count > 12){
+            count = count - 12;
         }else{
             count = 0;
         }       
@@ -117,7 +117,6 @@ const questions  = [
   }
 
   function getHighScores(){
-    
     const scoreStorage = JSON.parse(localStorage.getItem("scoreStorage")) || [];
     const newScore = {
         "name": initials.value,
@@ -125,11 +124,13 @@ const questions  = [
     };
 
     var index = scoreStorage.findIndex(function (otherScore) {
-        return (newScore.name === otherScore.name) && (newScore.score > otherScore.score);
+        return (newScore.name === otherScore.name);
     });
 
-    if (index + 1) {
-        scoreStorage[index].score = newScore.score;
+    if ((index + 1)) {
+        if ((newScore.score > scoreStorage[index].score)) {
+            scoreStorage[index].score = newScore.score;
+        }
     }else{
         scoreStorage.push(newScore);
     }
@@ -141,7 +142,7 @@ const questions  = [
     scoreStorage.splice(10);
 
     for (let i = 0; i < scoreStorage.length; i++) {
-        document.getElementById("h-list").innerHTML += "<li>" + (i + 1) + ". " + scoreStorage[i].name + " - " + scoreStorage[i].score + "</li>";        
+        document.getElementById("h-list").innerHTML += "<li>" + '<span class= "num">' + (i + 1)  + "</span>" + ". " + scoreStorage[i].name + " - " + scoreStorage[i].score + "</li>";        
     }
 
     localStorage.setItem("scoreStorage", JSON.stringify(scoreStorage));
@@ -152,6 +153,8 @@ const questions  = [
   }
 
   function restartQuiz(){
+    result.innerText = "";
+    initials.value = "";
     document.getElementById("h-list").innerHTML = "";
     content.innerHTML = "Code Quiz Challenge";
     count = 60;

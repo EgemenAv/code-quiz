@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Code Quiz Challenge</title>
 </head>
 <body>
     <div id="main">
-        <header>
-            <div class="header-container">
-                <div class="high-score">
-                    <p> view high score</p>
+            <div id="header-container">
+
+                <div class="header" id="view-high-score">
+                    <p>view high score</p>
                 </div>
-                <div class="timer">
-                <p> time : <span id="counter">60</span> </p>
+
+                <div class="header" id="timer">
+                    <p> time : <span id="counter">60</span> </p>
                 </div>
+
             </div>
-        </header>
 
-
+        <div id="content-div">
             <h1 id="content">Code Quiz Challenge</h1>
-
+        </div>
+            
         <div id="start">
-            <p>Try to answer the following code-related questions within the time limit <br>
+            <p id="intro">Try to answer the following code-related questions within the time limit <br>
             Keep in mind that incorrect answers will penalize your secore/time <br>
             by 10 seconds!</b></p>
             <br>
@@ -40,7 +43,7 @@
                 <br>
                 <button class="option" id="btn-4">Button 4</button>
             </div>
-
+            <hr>
             <div id="selected-answer">
                 <p> Your Answer : <span id="result"></span> </p>
             </div>
@@ -60,8 +63,6 @@
             <button id="clear">Clear High Scores</button>
         </div>
 
-
-        
     </div>
     
 

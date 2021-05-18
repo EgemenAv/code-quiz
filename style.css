@@ -1,0 +1,96 @@
+body{
+    background: linear-gradient(to right, #76A8CD 0%, #CBEAFF 50%, #76A8CD 100%);
+}
+
+div{
+    margin: auto;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button{
+    background-color: rgb(38, 57, 73);
+    padding: 10px;
+    border-radius: 15px;
+    color: aliceblue;
+}
+
+button:hover{
+    background-color: rgb(75, 118, 153);
+}
+
+#main{
+    text-align: center;
+    
+}
+
+#header-container{
+    height: 90px;
+    border-radius: 15px;
+}
+
+.header{
+    background-color: aliceblue;
+    border-radius: 15px;
+    border: 7px solid rgb(75, 118, 153) ;
+    width: 150px;
+    height: 50px;
+}
+
+#view-high-score{
+    float: left;
+}
+
+#timer{
+    float: right;
+}
+
+#content-div{
+    width: 80%;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14;
+}
+
+#intro{
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.option{
+    font-family: "Arial Black", Gadget, sans-serif;
+    width: 200px;
+    margin-top: 10px;
+}
+
+hr{
+    background-color: aliceblue;
+    width: 40%;
+}
+
+#result{
+    font-style: italic;
+}
+
+#username{
+    padding: 5px;
+}
+
+#h-list{
+    list-style-type: none;
+    list-style-position: inside;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+    color: aliceblue;
+}
+li{
+    padding: 5px;
+    margin-bottom: 3px;
+}
+li:nth-child(odd){
+    background-color:rgb(38, 57, 73);
+}
+
+li:nth-child(even){
+    background-color:rgb(75, 118, 153)
+}
