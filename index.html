@@ -14,7 +14,7 @@
                     <p> view high score</p>
                 </div>
                 <div class="timer">
-                <p> time : <span id="counter">30</span> </p>
+                <p> time : <span id="counter">60</span> </p>
                 </div>
             </div>
         </header>
@@ -23,7 +23,11 @@
             <h1 id="content">Code Quiz Challenge</h1>
 
         <div id="start">
-            <button>Start Quiz</button>
+            <p>Try to answer the following code-related questions within the time limit <br>
+            Keep in mind that incorrect answers will penalize your secore/time <br>
+            by 10 seconds!</b></p>
+            <br>
+            <button id="startbtn">Start Quiz</button>
         </div>
 
         <div id="choices" style="display:none;">
@@ -45,8 +49,18 @@
 
         <div id="scoreboard" style="display:none;">
             <p>Your Score : <span id="score"></span></p>
-            <button id="restart">Go Back</button>
+            <label for="score-submit">Enter initials: </label>
+            <input type="text" name="initials" id="username" value="">
+            <button id="score-submit">Submit</button>
         </div>
+
+        <div id="highscores" style="display:none;">
+            <ul id="h-list"></ul>
+            <button id="restart">Go Back</button>
+            <button id="clear">Clear High Scores</button>
+        </div>
+
+
         
     </div>
     

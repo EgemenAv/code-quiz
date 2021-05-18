@@ -25,23 +25,37 @@ const questions  = [
         answer : "btn-4"    
     },
   ]
-  var count = 30;
+
+  var count = 60;
   var questionCount = 0;
 
-  var start = document.getElementById("start");
-  var options = document.getElementsByClassName("option");
-  var content = document.getElementById("content");
-  var result = document.getElementById("result");
-  var restart = document.getElementById("restart");
-  var main = document.getElementById("main");
   var counter = document.getElementById("counter");
 
-  start.addEventListener("click", startQuiz);
+  var startbtn = document.getElementById("startbtn");
+  var scoreSubmit = document.getElementById("score-submit");
+  var restart = document.getElementById("restart");
+  var options = document.getElementsByClassName("option");
+  var clear = document.getElementById("clear");
+
+  var initials = document.getElementById("username");
+
+  
+  var start = document.getElementById("start");
+  var content = document.getElementById("content");
+  var result = document.getElementById("result"); 
+  var main = document.getElementById("main");
+  
+
+  startbtn.addEventListener("click", startQuiz);
   options[0].addEventListener("click", checkAnswer);
   options[1].addEventListener("click", checkAnswer);
   options[2].addEventListener("click", checkAnswer);
   options[3].addEventListener("click", checkAnswer);
   restart.addEventListener("click", restartQuiz);
+  scoreSubmit.addEventListener("click", getHighScores);
+  clear.addEventListener("click", clearScores => {
+    localStorage.clear();
+  });
 
 
   function startQuiz(e){
@@ -62,17 +76,6 @@ const questions  = [
     document.getElementById("choices").style.display = "block";
   }
 
-
-  function endQuiz(){
-    // display score window
-    document.getElementById("choices").style.display = "none";
-    content.innerHTML = "SCOREBOARD";
-    document.getElementById("score").innerText = count;
-    document.getElementById("scoreboard").style.display = "block";
-
-
-  }
-
  function getQuestion(count){
      // get nth question where n is questionCount
     content.innerHTML = questions[count].question;
@@ -88,8 +91,8 @@ const questions  = [
         result.innerText = "Correct!";
     }else{
         result.innerText = "Wrong!";
-        if(count > 6){
-            count = count - 6;
+        if(count > 10){
+            count = count - 10;
         }else{
             count = 0;
         }       
@@ -99,19 +102,63 @@ const questions  = [
     if(questionCount + 1 < questions.length){
         questionCount++;
         getQuestion(questionCount);
-    }else{
-        clearInterval(timer);
+    }else{      
         endQuiz();
     }
   }
+ 
+  function endQuiz(){
+    // display score window
+    clearInterval(timer);
+    document.getElementById("choices").style.display = "none";
+    content.innerHTML = "ALL DONE!";
+    document.getElementById("score").innerText = count;
+    document.getElementById("scoreboard").style.display = "block";
+  }
+
+  function getHighScores(){
+    
+    const scoreStorage = JSON.parse(localStorage.getItem("scoreStorage")) || [];
+    const newScore = {
+        "name": initials.value,
+        "score": count
+    };
+
+    var index = scoreStorage.findIndex(function (otherScore) {
+        return (newScore.name === otherScore.name) && (newScore.score > otherScore.score);
+    });
+
+    if (index + 1) {
+        scoreStorage[index].score = newScore.score;
+    }else{
+        scoreStorage.push(newScore);
+    }
+    
+    scoreStorage.sort(function(a,b){
+        return b.score - a.score;
+    });
+
+    scoreStorage.splice(10);
+
+    for (let i = 0; i < scoreStorage.length; i++) {
+        document.getElementById("h-list").innerHTML += "<li>" + (i + 1) + ". " + scoreStorage[i].name + " - " + scoreStorage[i].score + "</li>";        
+    }
+
+    localStorage.setItem("scoreStorage", JSON.stringify(scoreStorage));
+
+    document.getElementById("scoreboard").style.display = "none"; 
+    content.innerHTML = "HIGH SCORES";
+    document.getElementById("highscores").style.display = "block";
+  }
 
   function restartQuiz(){
+    document.getElementById("h-list").innerHTML = "";
     content.innerHTML = "Code Quiz Challenge";
-    count = 30;
+    count = 60;
     questionCount = 0;
 
     counter.textContent = count;
-    document.getElementById("scoreboard").style.display = "none";
+    document.getElementById("highscores").style.display = "none";
     start.style.display = "block";
     
   }
