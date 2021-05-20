@@ -1,4 +1,4 @@
-
+localStorage.clear();
 const questions  = [
     {
         question: "Commonly used data type Do Not include:---",
