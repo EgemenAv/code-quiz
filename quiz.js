@@ -1,3 +1,4 @@
+
 const questions  = [
     {
         question: "Commonly used data type Do Not include:---",
@@ -54,7 +55,7 @@ const questions  = [
   restart.addEventListener("click", restartQuiz);
   scoreSubmit.addEventListener("click", getHighScores);
   clear.addEventListener("click", clearScores => {
-    localStorage.setItem("scoreStorage", "");
+    localStorage.removeItem("scoreStorage");
   });
 
 
