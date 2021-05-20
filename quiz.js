@@ -54,7 +54,7 @@ const questions  = [
   restart.addEventListener("click", restartQuiz);
   scoreSubmit.addEventListener("click", getHighScores);
   clear.addEventListener("click", clearScores => {
-    localStorage.clear();
+    localStorage.setItem("scoreStorage", "");
   });
 
 
