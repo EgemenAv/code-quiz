@@ -118,6 +118,8 @@ const questions  = [
 
   function getHighScores(){
     const scoreStorage = JSON.parse(localStorage.getItem("scoreStorage")) || [];
+    console.log(localStorage);
+    console.log(scoreStorage);
     const newScore = {
         "name": initials.value,
         "score": count
